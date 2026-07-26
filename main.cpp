@@ -101,7 +101,7 @@ class Payroll
                 return;
             }
             EmployeeNode *current = head;
-            double = TaxRate = 0.15;
+            double TaxRate = 0.15;
             double totalPayout = 0.0;
 
             cout << "\n---Payroll Report---" << endl;
@@ -120,9 +120,20 @@ class Payroll
             cout << "Total Company Payout: " << totalPayout << endl;
             cout << " == == == == == == == == == == == == == == == == = "<<endl;
         }
-        saveToCSV()
+        void saveToCSV()
         {
-
+            ofstream file("payroll.csv");
+            if (file.is_open())
+            {
+                EmployeeNode *current = head;
+                while (current != nullptr)
+                {
+                    file << current->emp_id << "," << current->name << "," << current->netSalary << endl;
+                    current = current->next;
+                }
+                file.close();
+            }
+            cout << "Payroll data saved to payroll.csv successfully!" << endl;
         }
 };
 int main()
@@ -133,7 +144,7 @@ int main()
     payroll.deleteEmployee();
     payroll.updateEmployee();
     payroll.generatePayroll();
-    payroll.saveToCSV("payroll.csv");
+    payroll.saveToCSV();
 
     return 0;
 }

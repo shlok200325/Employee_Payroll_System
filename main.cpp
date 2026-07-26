@@ -64,8 +64,26 @@ class Payroll
             if(head==nullptr)
             {
                 cout << "No employees found in system." << endl;
+                endl;
                 return;
+            } 
+            Employee *temp = head;
+
+            while (temp != nullptr)
+            {
+                cout<<"Emmployee ID :"<<temp->emp_id
+                << endl;
+                cout<<"name  :"<<temp->name<<
+                endl;
+                cout<<"Salary :"<<temp->salary<<
+                endl;
+                cout<<"-----------------------------"<<endl;
+
+                temp = temp->next;
+
             }
+        
+
         }
         void deleteEmployee()
         {

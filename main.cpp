@@ -77,7 +77,30 @@ class Payroll
         }
         void generatePayroll()
         {
+            if(head==nullptr)
+            {
+                cout << "No employees found in system." << endl;
+                return;
+            }
+            EmployeeNode *current = head;
+            double = TaxRate = 0.15;
+            double totalPayout = 0.0;
 
+            cout << "\n---Payroll Report---" << endl;
+
+            while(current!=nullptr)
+            {
+                double deduction = current->salary * TaxRate;
+                double netSalary = current->salary - deduction;
+                totalPayout += netSalary;
+
+                cout << "Employee ID: " << current->emp_id << "|" << "Name: " << current->name << endl;
+                cout << "Gross Salary: " << current->salary << endl;
+                cout << "Tax Deduction: " << deduction << endl;
+                cout << "Net Salary: " << netSalary << endl;
+            }
+            cout << "Total Company Payout: " << totalPayout << endl;
+            cout << " == == == == == == == == == == == == == == == == = "<<endl;
         }
         saveToCSV()
         {

@@ -75,6 +75,7 @@ void saveToCSV(string payroll)
 int main()
 {
     addEmployee();
+    displayEmployee();
     deleteEmployee();
     updateEmployee();
     generatePayroll();

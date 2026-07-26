@@ -61,7 +61,11 @@ class Payroll
         }
         void displayEmployee()
         {
-
+            if(head==nullptr)
+            {
+                cout << "No employees found in system." << endl;
+                return;
+            }
         }
         void deleteEmployee()
         {

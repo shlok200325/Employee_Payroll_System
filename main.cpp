@@ -22,64 +22,73 @@ struct Employee
 class Payroll
 {
     private:
-        Employee *head=nullptr;
+        Employee *head;
     public:
         Payroll()
         {
             head = nullptr;
         }
+        void addEmployee()
+        {
+            int id;
+            string n;
+            double s;
+            cout << "\n--- Add New Employee ---" << endl;
+            cout << "Enter Employee ID: ";
+            cin >> id;
+
+            cout << "Enter Employee Name: ";
+            cin >> n;
+
+            cout << "Enter Base Salary: ";
+            cin >> s;
+
+            Employee* newNode = new Employee(id, n, s);
+
+            if (head == nullptr)
+            {
+                head = newNode;
+                cout << "Success: " << n << " added as the first employee!" << endl;
+                return;
+            }
+           Employee* current = head;
+           while (current->next != nullptr)
+           {
+            current = current->next;
+           }
+        current->next = newNode;
+        cout << "Success: " << n << " added to the system!" << endl;
+        }
+        void displayEmployee()
+        {
+
+        }
+        void deleteEmployee()
+        {
+
+        }
+        void updateEmployee()
+        {
+
+        }
+        void generatePayroll()
+        {
+
+        }
+        saveToCSV()
+        {
+
+        }
 };
-void addEmployee()
-{
-
-}
-
-void displayEmployee()
-{
-
-}
-
-void deleteEmployee()
-{
-
-}
-
-void updateEmployee()
-{
-
-}
-void generatePayroll()
-{
-
-}
-void saveToCSV(string payroll)
-{
-    ofstream file("payroll.csv");
-
-    while(!file.is_open())
-    {
-        cout << "Error opening file. Please try again." << endl;
-        return;
-    }
-    file << "Employee_ID , Name , Salary" << endl;
-
-    Employee *temp=head;
-    while(temp!=nullptr)
-    {
-        file << temp->emp_id << " , " << temp->name << " , " << temp->salary << endl;
-        temp = temp->next;
-    }
-    file.close();
-    cout << "Payroll data saved to " << payroll << " sucessfully." << endl;
-}
 int main()
 {
-    addEmployee();
-    displayEmployee();
-    deleteEmployee();
-    updateEmployee();
-    generatePayroll();
-    saveToCSV("payroll.csv");
+    Payroll payroll;
+    payroll.addEmployee();
+    payroll.displayEmployee();
+    payroll.deleteEmployee();
+    payroll.updateEmployee();
+    payroll.generatePayroll();
+    payroll.saveToCSV("payroll.csv");
 
     return 0;
 }

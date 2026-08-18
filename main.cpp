@@ -58,11 +58,13 @@ public:
     string line;
     int loadedCount = 0;
     while (getline(file, line)) {
-      if (line.empty()) continue;
+      if (line.empty())
+        continue;
       stringstream ss(line);
       string idStr, name, salaryStr;
 
-      if (getline(ss, idStr, ',') && getline(ss, name, ',') && getline(ss, salaryStr, ',')) {
+      if (getline(ss, idStr, ',') && getline(ss, name, ',') &&
+          getline(ss, salaryStr, ',')) {
         try {
           int id = stoi(idStr);
           double salary = stod(salaryStr);
@@ -88,7 +90,8 @@ public:
     }
     file.close();
     if (loadedCount > 0) {
-      cout << "Loaded " << loadedCount << " employee record(s) from " << filename << "." << endl;
+      cout << "Loaded " << loadedCount << " employee record(s) from "
+           << filename << "." << endl;
     }
   }
 
@@ -106,7 +109,8 @@ public:
     }
 
     if (isDuplicate(id)) {
-      cout << "Error: Employee ID " << id << " already exists! Cannot add duplicate employee ID." << endl;
+      cout << "Error: Employee ID " << id
+           << " already exists! Cannot add duplicate employee ID." << endl;
       return;
     }
 
@@ -171,7 +175,8 @@ public:
     if (head->emp_id == id) {
       Employee *toDelete = head;
       head = head->next;
-      cout << "Success: Employee ID " << id << " (" << toDelete->name << ") deleted." << endl;
+      cout << "Success: Employee ID " << id << " (" << toDelete->name
+           << ") deleted." << endl;
       delete toDelete;
       return;
     }
@@ -186,7 +191,8 @@ public:
     } else {
       Employee *toDelete = current->next;
       current->next = current->next->next;
-      cout << "Success: Employee ID " << id << " (" << toDelete->name << ") deleted." << endl;
+      cout << "Success: Employee ID " << id << " (" << toDelete->name
+           << ") deleted." << endl;
       delete toDelete;
     }
   }
@@ -252,7 +258,8 @@ public:
       double netSalary = current->salary - deduction;
       totalPayout += netSalary;
 
-      cout << "Employee ID : " << current->emp_id << " | Name: " << current->name << endl;
+      cout << "Employee ID : " << current->emp_id
+           << " | Name: " << current->name << endl;
       cout << "Gross Salary: " << current->salary << endl;
       cout << "Tax Deduction: " << deduction << endl;
       cout << "Net Salary  : " << netSalary << endl;
@@ -269,13 +276,15 @@ public:
     if (file.is_open()) {
       Employee *current = head;
       while (current != nullptr) {
-        file << current->emp_id << "," << current->name << "," << current->salary << endl;
+        file << current->emp_id << "," << current->name << ","
+             << current->salary << endl;
         current = current->next;
       }
       file.close();
       cout << "Payroll data saved to " << filename << " successfully!" << endl;
     } else {
-      cout << "Error: Unable to open file " << filename << " for writing." << endl;
+      cout << "Error: Unable to open file " << filename << " for writing."
+           << endl;
     }
   }
 };
@@ -333,4 +342,4 @@ int main() {
   } while (choice != 7);
 
   return 0;
-}
+}
